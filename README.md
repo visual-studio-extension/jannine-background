@@ -8,3 +8,6 @@ How to use SoBackground:
 2. Install the Extension "SoBackground", or download it from here https://visualstudiogallery.msdn.microsoft.com/9a78c7f9-4d19-406b-a064-b0bd55b38ede
 
 3. Download and install transparent themes from here http://sobrian.azurewebsites.net/TransparentThemes.rar
+
+Idea from 粽子猪zZ: http://blog.csdn.net/u012915516/article/details/42808019
+
