@@ -24,30 +24,6 @@ using Microsoft.Win32;
 
 namespace SoBackground
 {
-    public class OptionPageGrid : DialogPage
-    {
-        private string _ImagePath;
-
-        [Category("SoBackground")]
-        [DisplayName("Path")]
-        [Description("Set the path of background")]
-        public string ImagePath
-        {
-            get
-            {
-                return _ImagePath;
-            }
-            set
-            {
-                _ImagePath = value;
-                if (value.Contains(".png") || value.Contains(".jpg"))
-                {
-                    SoBackgroundPackage.LoadImage(value);
-                }
-            }
-        }
-    }
-
         /// <summary>
         /// This is the class that implements the package exposed by this assembly.
         /// </summary>
