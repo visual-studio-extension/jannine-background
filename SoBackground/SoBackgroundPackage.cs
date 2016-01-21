@@ -30,7 +30,7 @@ namespace SoBackground
 
         [Category("SoBackground")]
         [DisplayName("Path")]
-        [Description("Set the path of background, takes effect after restarting Visual Studio")]
+        [Description("Set the path of background")]
         public string ImagePath
         {
             get
