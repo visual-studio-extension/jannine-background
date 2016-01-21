@@ -11,3 +11,5 @@ How to use SoBackground:
 
 Idea from 粽子猪zZ: http://blog.csdn.net/u012915516/article/details/42808019
 
+Default Background from Zohaib Usman: http://simpledesktops.com/browse/desktops/2015/jun/15/spiritual-lights/
+
