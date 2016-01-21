@@ -40,8 +40,13 @@ namespace SoBackground
             set
             {
                 _ImagePath = value;
+                if (value.Contains(".png") || value.Contains(".jpg"))
+                {
+                    SoBackgroundPackage.LoadImage(value);
+                }
             }
         }
+    }
 
         /// <summary>
         /// This is the class that implements the package exposed by this assembly.
@@ -110,33 +115,58 @@ namespace SoBackground
 
             private void MainWindow_Loaded(object sender, RoutedEventArgs e)
             {
-                Window Window = (Window)sender;
+                Window rWindow = sender as Window;
+                Image Image = new Image();
+                Image.Name = "SoBackground_Image";
+                Image.Stretch = Stretch.UniformToFill;
+                Image.HorizontalAlignment = HorizontalAlignment.Center;
+                Image.VerticalAlignment = VerticalAlignment.Center;
 
-                BitmapFrame BitmapFrame;
-                try
-                {
-                    BitmapFrame = BitmapFrame.Create(new Uri(ImagePath), BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
-                }
-                catch (Exception ex)
-                {
-                    BitmapFrame = BitmapFrame.Create(new Uri(Path.Combine(Environment.CurrentDirectory, "DefaultBackground.jpg")), BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
-                }
-                BitmapFrame.Freeze();
+                Grid.SetRowSpan(Image, 4);
+                Grid RootGrid = Application.Current.MainWindow.Template.FindName("RootGrid", Application.Current.MainWindow) as Grid;
+                RootGrid.Children.Insert(0, Image);
 
-                Image rImageControl = new Image()
-                {
-                    Source = BitmapFrame,
-                    Stretch = Stretch.UniformToFill,
-                    HorizontalAlignment = HorizontalAlignment.Center,
-                    VerticalAlignment = VerticalAlignment.Center,
-                };
+                LoadImage(ImagePath);
+            }
+            #endregion
+            
+        public static void LoadImage(string imagePath)
+        {
+            BitmapFrame BitmapFrame;
+            try
+            {
+                BitmapFrame = BitmapFrame.Create(new Uri(imagePath), BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
+            }
+            catch (Exception ex)
+            {
+                //FileStream tempStream = new FileStream(@"D:\log.txt", FileMode.Append);
+                //StreamWriter writer = new StreamWriter(tempStream);
+                //writer.WriteLine(GetDefaultImagePath() + "\n");
+                //writer.Close();
+                //tempStream.Close();
 
-                Grid.SetRowSpan(rImageControl, 4);
-                Grid RootGrid = (Grid)Window.Template.FindName("RootGrid", Window);
-                RootGrid.Children.Insert(0, rImageControl);
+                BitmapFrame = BitmapFrame.Create(new Uri(GetDefaultImagePath(), UriKind.RelativeOrAbsolute), BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
             }
 
-            #endregion
+            BitmapFrame.Freeze();
+
+            Grid RootGrid = (Grid)Application.Current.MainWindow.Template.FindName("RootGrid", Application.Current.MainWindow);
+
+            Image image = RootGrid.Children[0] as Image;
+            if (image != null)
+            {
+                if (image.Name == "SoBackground_Image")
+                {
+                    image.Source = BitmapFrame;
+                }
+            }
         }
-    }
+
+        private static string GetDefaultImagePath()
+        {
+            string path = typeof(SoBackgroundPackage).Assembly.Location.Replace("SoBackground.dll", "DefaultBackground.png");
+            return path;
+        }
+
+        }
 }
