@@ -80,7 +80,7 @@ namespace SoBackground
             {
                 get
                 {
-                    OptionPageGrid OptionPageGrid = (OptionPageGrid)GetDialogPage(typeof(OptionPageGrid));
+                    OptionPageGrid OptionPageGrid = GetDialogPage(typeof(OptionPageGrid)) as OptionPageGrid;
                     return OptionPageGrid.ImagePath;
                 }
             }
@@ -115,7 +115,7 @@ namespace SoBackground
 
             private void MainWindow_Loaded(object sender, RoutedEventArgs e)
             {
-                Window rWindow = sender as Window;
+                //Window Window = sender as Window;
                 Image Image = new Image();
                 Image.Name = "SoBackground_Image";
                 Image.Stretch = Stretch.UniformToFill;
