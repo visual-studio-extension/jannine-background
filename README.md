@@ -1,5 +1,5 @@
 # SoBackground
-A Visual Studio 2015 Extension to change the customize the background completely
+A Visual Studio 2015 Extension to customize the background completely
 
 How to use SoBackground: 
 
