@@ -25,7 +25,9 @@ namespace SoBackground
 
         public void TextViewCreated(IWpfTextView rpTextView)
         {
-            new EditorBackground(rpTextView);
+            // new EditorBackground(rpTextView);
+
+            rpTextView.Background = Brushes.Green; 
 
             //去掉断点边栏的背景
             var rProperties = EditorFormatMapService.GetEditorFormatMap(rpTextView).GetProperties("Indicator Margin");
