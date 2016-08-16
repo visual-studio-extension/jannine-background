@@ -186,9 +186,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\jw1.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\jw2.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
