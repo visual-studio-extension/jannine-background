@@ -77,15 +77,13 @@ namespace Jannine.Background.Core
             {
                 SetCanvasBackground(true);
 
-                var newImage = BitmapFrame.Create(new Uri("pack://application:,,,/Jannine.Background;component/Resources/DefaultBackground.png", UriKind.RelativeOrAbsolute));
+                var newImage = BitmapFrame.Create(new Uri("pack://application:,,,/Jannine.Background;component/Resources/jw2.jpg", UriKind.RelativeOrAbsolute));
                 var opacity = 0.1;
 
                 _editorCanvas.Background = new ImageBrush(newImage)
                 {
                     Opacity = opacity,
-                    //Stretch = _setting.ImageStretch.ConvertTo(),
-                    //AlignmentX = _setting.PositionHorizon.ConvertTo(),
-                    //AlignmentY = _setting.PositionVertical.ConvertTo()
+                    Stretch = Stretch.UniformToFill
                 };
             }
             catch (Exception ex)
@@ -123,7 +121,7 @@ namespace Jannine.Background.Core
             var control = (ContentControl)_view;
             var parent = (Grid)control.Parent;
             var viewstack = (Canvas)control.Content;
-            var opacity = isTransparent && _isMainWindow ? 0.0 : 0.5;
+            var opacity = isTransparent && _isMainWindow ? 0.0 : 0.1;
             if (_themeViewBackground == null)
             {
                 _themeViewBackground = _view.Background;
